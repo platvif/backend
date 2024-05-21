@@ -1,4 +1,4 @@
-## Ahora, iniciamos el servidor:
+# Ahora, iniciamos el servidor:
 
 - node server.js
 
@@ -6,8 +6,8 @@
 
 Con esto, tu servidor debería estar corriendo y listo para manejar las rutas de registro y login.
 
-# Probar las rutas
-Registro de usuario
+## Probar las rutas
+### Registro de usuario
 Para registrar un usuario, puedes hacer una solicitud POST a http://localhost:3000/api/user/register con el siguiente cuerpo (body):
 
 {
@@ -16,7 +16,8 @@ Para registrar un usuario, puedes hacer una solicitud POST a http://localhost:30
     "mail": "mbottino01@gmail.com",
     "pass": "****"
 }
-# Login de usuario
+
+### Login de usuario
 Para loguear un usuario, puedes hacer una solicitud POST a http://localhost:3000/api/user/login con el siguiente cuerpo (body):
 
 {
