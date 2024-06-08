@@ -36,4 +36,45 @@ router.post('/login', (req, res) => {
     });
 });
 
+// Ruta para actualizar la información del usuario
+router.put('/update/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, lastname, mail, phone, favorite_res, emoji, selfie, cover, location } = req.body;
+    
+    if (!id) {
+        return res.status(400).send('User ID is required');
+    }
+
+    const query = `UPDATE users SET 
+                    name = ?, 
+                    lastname = ?, 
+                    mail = ?, 
+                    phone = ?, 
+                    favorite_res = ?, 
+                    emoji = ?, 
+                    selfie = ?, 
+                    cover = ?, 
+                    location = ? 
+                   WHERE id = ?`;
+
+    db.run(query, [name, lastname, mail, phone, favorite_res, emoji, selfie, cover, location, id], function(err) {
+        if (err) {
+            return res.status(500).send(err.message);
+        }
+        res.send({ message: 'User updated successfully', changes: this.changes });
+    });
+});
+
+// Nueva ruta para obtener todos los usuarios registrados
+router.get('/all', (req, res) => {
+    const query = `SELECT * FROM users`;
+
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al obtener usuarios' });
+        }
+        res.status(200).json(rows);
+    });
+});
+
 module.exports = router;
