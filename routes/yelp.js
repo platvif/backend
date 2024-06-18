@@ -37,4 +37,26 @@ router.get('/search', async (req, res) => {
     }
   });
 
+  router.get('/details/:id', async (req, res) => {
+    const restaurantId = req.params.id;
+    const locale = req.query.locale || 'en_US';
+
+    try {
+        const response = await axios.get(`https://api.yelp.com/v3/businesses/${restaurantId}`, {
+            headers: {
+                Authorization: `Bearer ${API_KEY}`,
+                'Accept': 'application/json'
+            },
+            params: {
+                locale
+            }
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching restaurant details from Yelp API:', error);
+        res.status(500).json({ error: 'Error fetching restaurant details from Yelp API' });
+    }
+});
+
 module.exports = router;
