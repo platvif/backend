@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const API_KEY = 'MvaozMrbAkKm1Glx42KD1CyxqlF4H7cIkCfiYp30090SekEoW81LmopHtljEQmzQav29KAitERc56uW0OXzXbhAKVPQBWObgnifBLDDTnoOUCCdwvrVVruSpB82IZnYx';
+const API_KEY = 'P7ilRNuVdJHJaHyWIXdQ13KJE3cfxYDjNlNtLnhoM8Mu16Fz5QGKws5H4Mx8_CPoul5CT7vBdJF-puYqAHKvUGsKh_eG1uNy9eA--1c3j9ArFBGEVYqZGB67pNjXZnYx';
 
 router.get('/search', async (req, res) => {
     const { term, latitude, longitude, location, radius, categories, price } = req.query;
